@@ -1,0 +1,30 @@
+.signleCenterRow, .signleTopRow {
+  display: flex;
+  display: -webkit-flex;
+  min-height: 40px;
+  justify-content: flex-start;
+  align-items: center;
+  p {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  p:first-child {
+    flex-basis: 80px;
+    text-align: right;
+  }
+  .input {
+    width: 300px;
+    margin-right: 20px;
+  }
+
+  i {
+    cursor: pointer;
+    &:hover {
+      color: @primary-color;
+    }
+  }
+}
+
+.signleTopRow {
+  align-items: flex-start;
+}
