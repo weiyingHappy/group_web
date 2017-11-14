@@ -9,20 +9,14 @@ module.exports = {
       cus: 'net',
     },
     {
-      model: 'product',
+      model: 'member',
     },
     {
-      model: 'net',
-    },
-    {
-      model: 'staff',
-    },
-    {
-      model: 'order',
+      model: 'hotel',
       noadd: true,
     },
     {
-      model: 'delivery',
+      model: 'group',
       noadd: true,
     },
   ],

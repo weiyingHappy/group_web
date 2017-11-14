@@ -17,6 +17,7 @@ const Login = ({
   function handleOk () {
     validateFieldsAndScroll((errors, values) => {
       if (errors) {
+        console.log (errors)
         return
       }
       dispatch({ type: 'app/login', payload: values })

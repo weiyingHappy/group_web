@@ -4,12 +4,12 @@ import { upperModle } from 'util'
 import { apiPackage } from 'config'
 
 export async function login(data) {
-  return request(`${apiPackage}/Basic/login`, data)
+  return request(`${apiPackage}/GroupBasic/login`, data)
 }
 
 // 根据token获取登陆信息
 export async function loginInfo() {
-  return request(`${apiPackage}/Basic/loginInfo`)
+  return request(`${apiPackage}/GroupBasic/loginInfo`)
 }
 
 // 获取七牛上传token

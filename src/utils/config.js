@@ -1,11 +1,11 @@
 module.exports = {
   name: '酷客',
-  apiPackage: 'Admin',
+  apiPackage: 'Group',
   openPages: ['/', '/login'],
   apiPrefix: {
-    production: 'http://www.cooke100.com/api/',
-    testing: 'http://test.lianwuyun.cn/newbuy_api/',
-    development: 'http://test.lianwuyun.cn/newbuy_api/',
+    production: 'http://www.hotelets.com/api/',
+    testing: 'http://www.lianwuyun.cn/api/',
+    development: 'http://www.lianwuyun.cn/api/',
     // development: 'http://127.0.0.1/nb/',
   },
   domain: {
@@ -14,7 +14,7 @@ module.exports = {
     development: 'http://localhost:8000/',
   },
   qiniuPrefix: 'http://ov2ek9bbx.bkt.clouddn.com/',
-  homePath: '/order/list/1',
+  homePath: '/team/list/1/group-manage',
   leaveClean: false,
   lazy: false,
 }
