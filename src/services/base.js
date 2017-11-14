@@ -48,5 +48,6 @@ export async function query(router, payload, action) {
       payload.id = router.id
     }
   }
+  console.log(payload)
   return request(url, payload)
 }

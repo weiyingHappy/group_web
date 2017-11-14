@@ -37,7 +37,8 @@ const commonModel = modelExtend(model, {
   effects: {
     // 通用查询，主要是查询list和detail
     * query({ payload, source }, { call, put, select }) {
-      const { router, historys } = yield select(_ => _.app)
+      const { router, historys, user } = yield select(_ => _.app)
+      log("query team", router)
 
       const lastHref = analyzePath(historys[historys.length - 2] || '/')
       log('lastHref', lastHref)
@@ -77,7 +78,8 @@ const commonModel = modelExtend(model, {
         newPayload = { ...currentModel.search, ...payload }
       }
       if (!newPayload.page) {
-        newPayload.page = currentModel ? currentModel.nowPage : 1
+        newPayload.page = currentModel ? currentModel.nowPage : 1;
+        newPayload.group_id = user.group_id || router.id;
       }
       // 对请求结果进行对应的处理，list的请求和detail的请求分开处理
       const data = yield call(query, router, newPayload)

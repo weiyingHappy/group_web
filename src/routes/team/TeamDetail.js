@@ -5,7 +5,7 @@ import { General } from 'components'
 import cs from '../app.less'
 
 const { DataTable, SearchBar } = General
-function TeamList({ dispatch, history, team, router }) {
+function TeamDetail({ dispatch, history, team, router }) {
   const columns = [
     {
       title: '酒店编号',
@@ -54,10 +54,7 @@ function TeamList({ dispatch, history, team, router }) {
   return (
     <div>
       <div className={cs.whitebg}>
-        <DataTable
-          columns={columns}
-          model={team}
-        />
+        hotel Detail
       </div>
     </div>
 
@@ -68,4 +65,4 @@ function mapStateToProps({ app, team }) {
   return { team, router: app.router }
 }
 
-export default connect(mapStateToProps)(TeamList)
+export default connect(mapStateToProps)(TeamDetail)

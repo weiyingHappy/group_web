@@ -14,7 +14,7 @@ module.exports = {
     development: 'http://localhost:8000/',
   },
   qiniuPrefix: 'http://ov2ek9bbx.bkt.clouddn.com/',
-  homePath: '/team/list/1/group-manage',
+  homePath: '/team/list/1/groupManage',
   leaveClean: false,
   lazy: false,
 }

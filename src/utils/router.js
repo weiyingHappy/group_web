@@ -12,8 +12,9 @@ module.exports = {
       model: 'member',
     },
     {
-      model: 'hotel',
+      model: 'team',
       noadd: true,
+      cus:"groupManage"
     },
     {
       model: 'group',
