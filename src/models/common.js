@@ -2,6 +2,7 @@ import modelExtend from 'dva-model-extend'
 import { query } from 'services/base'
 import { log, filterData, analyzePath } from 'util'
 import { routerRedux } from 'dva/router'
+import cookie from 'js-cookie'
 import { leaveClean, lazy } from 'config'
 
 const model = {
@@ -36,7 +37,7 @@ const commonModel = modelExtend(model, {
 
   effects: {
     // 通用查询，主要是查询list和detail
-    * query({ payload, source }, { call, put, select }) {
+    * query({ payload, source }, { call, put, select, take }) {
       const { router, historys, user } = yield select(_ => _.app)
       log("query team", router)
 
@@ -73,29 +74,33 @@ const commonModel = modelExtend(model, {
         }
       }
 
-      let newPayload = { ...payload }
-      if (currentModel) {
-        newPayload = { ...currentModel.search, ...payload }
-      }
-      if (!newPayload.page) {
-        newPayload.page = currentModel ? currentModel.nowPage : 1;
-        newPayload.group_id = user.group_id || router.id;
-      }
-      // 对请求结果进行对应的处理，list的请求和detail的请求分开处理
-      const data = yield call(query, router, newPayload)
-      if (filterData(data)) {
-        const toSetState = { modelspace: router.model }
-        if (router.action === 'list') {
-          toSetState.lists = data.results.lists
-          toSetState.nowPage = data.results.nowPage
-          toSetState.count = data.results.count
-        } else {
-          toSetState.detail = data.results
+      //等待loginInfo先请求完成
+      let loginAction = cookie.get("group_id") ? true : yield take ("app/updateState");
+      if (loginAction){
+        let newPayload = { ...payload }
+        if (currentModel) {
+          newPayload = { ...currentModel.search, ...payload }
         }
-        yield put({
-          type: 'success',
-          payload: { ...toSetState },
-        })
+        if (!newPayload.page) {
+          newPayload.page = currentModel ? currentModel.nowPage : 1;
+          newPayload.group_id = cookie.get ("group_id") || '';
+        }
+        // 对请求结果进行对应的处理，list的请求和detail的请求分开处理
+        const data = yield call(query, router, newPayload)
+        if (filterData(data)) {
+          const toSetState = { modelspace: router.model }
+          if (router.action === 'list') {
+            toSetState.lists = data.results.lists
+            toSetState.nowPage = data.results.nowPage
+            toSetState.count = data.results.count
+          } else {
+            toSetState.detail = data.results
+          }
+          yield put({
+            type: 'success',
+            payload: { ...toSetState },
+          })
+        }
       }
     },
 

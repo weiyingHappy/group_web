@@ -21,6 +21,8 @@ const Routers = function ({ history, app }) {
     },
   ]
 
+  console.log("app ",app)
+
   const getRouterObj = (item, action) => {
     return ({
       path: `/${item.model}/${action}/:id${item.cus ? `/${item.cus}` : ''}`,

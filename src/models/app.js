@@ -51,6 +51,7 @@ export default {
       const data = yield call(loginInfo, payload)
       const { locationPathname } = yield select(_ => _.app)
       if (filterData(data)) {
+        cookie.set ('group_id',data.results.group_id)
         yield put({
           type: 'updateState',
           payload: {

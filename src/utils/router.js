@@ -3,9 +3,9 @@ module.exports = {
   modelRoute: [
     {
       model: 'shelf',
-      noadd: false,
-      nodetail: false,
-      nolist: false,
+      noadd: true,
+      nodetail: true,
+      nolist: true,
       cus: 'net',
     },
     {
@@ -19,6 +19,9 @@ module.exports = {
     {
       model: 'group',
       noadd: true,
+      nolist: true,
+      cus:"groupManage",
+
     },
   ],
 }

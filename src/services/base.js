@@ -14,7 +14,7 @@ export async function loginInfo() {
 
 // 获取七牛上传token
 export async function qiuniuToken() {
-  return request(`${apiPackage}/Basic/qiniuToken`)
+  return request(`${apiPackage}/GroupBasic/qiniuToken`)
 }
 
 // 根据token获取登陆信息

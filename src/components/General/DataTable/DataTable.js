@@ -3,6 +3,7 @@ import { Table } from 'antd'
 import { connect } from 'dva'
 
 function DataTable({ dispatch, loading, router, columns, model, rowKey }) {
+  console.log ("loading",loading)
   return (
     <Table
       columns={columns}

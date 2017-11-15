@@ -5,7 +5,7 @@ module.exports = {
       id: '1',
       name: '酒店管理',
       icon: 'appstore-o',
-      route: '/team/list/1/group-manage',
+      route: '/team/list/1/groupManage',
     },
     {
       id: '2',
@@ -17,14 +17,14 @@ module.exports = {
       id: '3',
       name: '集团信息',
       icon: 'shopping-cart',
-      route: '/group/detail',
+      route: '/group/detail/undefine/groupManage',
     }
   ],
 
   openkeys:
   {
-    member: { key: '1', sub: '1_1' },
-    team: { key: '2', sub: '2_1' },
+    team: { key: '1', sub: '1_1' },
+    member: { key: '2', sub: '2_1' },
     shelf: { key: '2', sub: '2_2' },
     group: { key: '3', sub: '3_1' },
   },

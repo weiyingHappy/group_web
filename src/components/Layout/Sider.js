@@ -3,6 +3,7 @@ import { Menu, Icon } from 'antd'
 import { menus, openkeys } from 'menu'
 import { Link } from 'dva/router'
 import styles from './Layout.less'
+import cookie from 'js-cookie'
 
 class Sider extends React.Component {
   state = {
@@ -38,7 +39,7 @@ class Sider extends React.Component {
           >
             {item.sub.map((sitem) => {
               return (<Menu.Item key={sitem.id}>
-                <Link to={sitem.route}>
+                <Link to={sitem.route.replace('undefine',cookie.get("group_id"))}>
                   {sitem.icon && <Icon type={sitem.icon} />}{sitem.name}
                 </Link>
               </Menu.Item>)
@@ -48,7 +49,7 @@ class Sider extends React.Component {
       }
       return (
         <Menu.Item key={item.id}>
-          <Link to={item.route}>
+          <Link to={item.route.replace('undefine',cookie.get("group_id"))}>
             {item.icon && <Icon type={item.icon} />}{!this.props.siderFold && item.name}
           </Link>
         </Menu.Item>)

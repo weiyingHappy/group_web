@@ -37,7 +37,7 @@ function TeamList({ dispatch, history, team, router }) {
                 onConfirm:() => {
                   dispatch ({
                     type:"team/edit",
-                    payload:{id:record.id,checked:record.checked != 1 ? 1 : 2},
+                    payload:{team_id:record.id,checked:record.checked != 1 ? 1 : 2},
                     action: 'edit',
                     didAction: { type: 1 },
                   })

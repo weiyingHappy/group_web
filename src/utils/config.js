@@ -1,7 +1,7 @@
 module.exports = {
   name: '酷客',
   apiPackage: 'Group',
-  openPages: ['/', '/login'],
+  openPages: ['/', '/login', '/choose', '/choose_hotel'],
   apiPrefix: {
     production: 'http://www.hotelets.com/api/',
     testing: 'http://www.lianwuyun.cn/api/',
