@@ -13,8 +13,8 @@ module.exports = {
     testing: 'http://test.lianwuyun.cn/admin/',
     development: 'http://localhost:8000/',
   },
-  qiniuPrefix: 'http://ov2ek9bbx.bkt.clouddn.com/',
-  homePath: '/team/list/1/groupManage',
+  qiniuPrefix: 'http://7xo285.com1.z0.glb.clouddn.com/',
+  homePath: '/choose',
   leaveClean: false,
   lazy: false,
 }

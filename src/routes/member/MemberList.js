@@ -1,35 +1,43 @@
 import React from 'react'
 import { connect } from 'dva'
-import { Popconfirm, Button, Row, Col } from 'antd'
+import { Popconfirm, Button, Row, Col, Input, Select, DatePicker } from 'antd'
 import { General } from 'components'
 import cs from '../app.less'
+import style from './index.less'
+const Option = Select.Option
 
 const { DataTable, SearchBar } = General
 function MemberList({ dispatch, history, member, router }) {
+  let { search } = member
   const columns = [
     {
       title: '会员昵称',
-      dataIndex: 'id',
+      dataIndex: 'nickname',
     },
     {
       title: '会员手机号码',
-      dataIndex: 'name',
+      dataIndex: 'phone',
     },
     {
       title: '会员等级',
-      dataIndex: 'barcode',
+      dataIndex: 'level',
     },
     {
       title: '会员来源',
-      dataIndex: 'price',
+      render:(text, record) => {
+        let str = '住那儿网';
+        str += record.group_id ? `-${record.group_name}` : '';
+        str += record.team_id ? `-${record.team_name}` : '';
+        return str;
+      }
     },
     {
       title: '会员创建时间',
-      dataIndex: 'price',
+      dataIndex: 'create_time',
     },
     {
       title: '会员积分',
-      dataIndex: 'price',
+      dataIndex: 'point',
     },
     {
       title: '操作',
@@ -57,28 +65,84 @@ function MemberList({ dispatch, history, member, router }) {
     },
   ]
 
+  const renderMemberSource = list => {
+    let arr = [];
+    (list || []).map ((i,k) => {arr.push(<Option value={i} key={i}>{i}</Option>)})
+    return arr
+  }
+
   return (
     <div>
-      <div className={cs.actionTitle}>
+      <div className={style.searchCase}>
         <Row>
-          <Col span={18}>
-            <Button icon="plus" onClick={() => { history.push(`/${router.model}/add/1`) }} >添加商品</Button>
-          </Col>
-          <Col span={6}>
-            <SearchBar
-              placeholder="商品名称/编号"
-              dispatch={dispatch}
-              router={router}
-              value={member.search.query}
+          <Col span={8}>
+            <label className={style.label}>用户昵称：</label>
+            <Input
+              className={style.formItem}
+              placeholder="请输入用户昵称"
+              value={search.nickname}
+              onChange={e => {
+                search.nickname = e.target.value;
+                dispatch ({
+                  type:"member/success",
+                  payload:{}
+                })
+              }}
             />
           </Col>
+          <Col span={8}>
+            <label className={style.label}>会员来源：</label>
+            <Select
+              className={style.formItem}
+            >{renderMemberSource (member.sourceArr)}</Select>
+          </Col>
+          <Col span={8}>
+            <label className={style.label}>会员等级：</label>
+            <Select
+              className={style.formItem}
+            >
+              <Option value="0">普通</Option>
+              <Option value="1">VIP</Option>
+            </Select>
+          </Col>
         </Row>
+        <Row>
+          <Col span={8}>
+            <label className={style.label}>用户手机号：</label>
+            <Input
+              className={style.formItem}
+              placeholder="请输入用户手机号"
+            />
+          </Col>
+          <Col span={8}>
+            <label className={style.label}>创建时间：</label>
+            <DatePicker
+              className={style.formItem}
+            />
+          </Col>
+          <Col span={8} style={{textIndent:142}}>
+            <Button className={style.clearBtn}>清除</Button>
+            <Button className={style.searchBtn}>查询</Button>
+          </Col>
+        </Row>
+      </div>
+
+      <div className={style.searchCountCase} >
+        共搜索到<span className={style.searchCount}>{member.count}</span>条信息
       </div>
 
       <div className={cs.whitebg}>
         <DataTable
           columns={columns}
           model={member}
+          onChange={p => {
+            dispatch ({
+              type:"member/success",
+              payload:{
+                nowPage:p,
+              }
+            })
+          }}
         />
       </div>
     </div>

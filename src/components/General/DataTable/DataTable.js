@@ -2,8 +2,7 @@ import React from 'react'
 import { Table } from 'antd'
 import { connect } from 'dva'
 
-function DataTable({ dispatch, loading, router, columns, model, rowKey }) {
-  console.log ("loading",loading)
+function DataTable({ dispatch, loading, router, columns, model, rowKey, onChange, showTotal }) {
   return (
     <Table
       columns={columns}
@@ -13,8 +12,8 @@ function DataTable({ dispatch, loading, router, columns, model, rowKey }) {
       pagination={{
         current: model.nowPage,
         total: model.count,
-        showTotal: total => `共 ${total} 条`,
-        onChange: (p) => {
+        showTotal: showTotal ? total => `共 ${total} 条` : () => '',
+        onChange: onChange ? onChange : (p) => {
           dispatch({
             type: `${router.model}/query`,
             payload: { page: p },

@@ -10,6 +10,8 @@ module.exports = {
     },
     {
       model: 'member',
+      noadd: true,
+      cus:"groupMember"
     },
     {
       model: 'team',

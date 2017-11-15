@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'dva'
-import { Button, Input, Upload } from 'antd'
+import { Button, Input, Upload, Progress  } from 'antd'
 import { General } from 'components'
 import cs from '../app.less'
 import style from './index.less'
 import plus from "../../assets/jia.png";
+import config from 'config'
 const { TextArea } = Input;
 
 let groupDetailState = false     //利用闭包模拟组件内状态库
@@ -26,14 +27,18 @@ function GroupDetail({ dispatch, history, group, router, loading }) {
       ))
     } else {
       (img || []).map ((i,k) => arr.push (
-        <span key={k} style={{display:"inline-block",marginRight:10,width:236,height:200,position:"relative",color:"#8A6432"}}>
+        <span key={k} style={{display:"inline-block",marginRight:10,marginBottom:10,width:236,height:200,position:"relative",color:"#8A6432"}}>
           <img src={i} style={{width:236,height:180}} />
           <Upload {...{
               action: "https://up.qbox.me/",
               listType: "picture",
               data: { token: group.qiniuToken },
+              beforeUpload:(file,fileList) => {
+                console.log ("fileList",fileList)
+              },
               onChange(info) {
                 if (info.file.status === "done") {
+                  info.fileList.splice (0,info.fileList.length)
                   group_img.splice (k,1,config.qiniuPrefix + info.file.response.hash)
                   dispatch ({
                     type:"group/success",
@@ -64,7 +69,8 @@ function GroupDetail({ dispatch, history, group, router, loading }) {
           key:"last",
           onChange(info) {
             if (info.file.status === "done") {
-              group_img.push (config.qiniu + info.file.response.hash);
+              info.fileList.splice (0,info.fileList.length)
+              group_img.push (config.qiniuPrefix + info.file.response.hash);
               dispatch ({
                 type:"group/success",
                 payload:{}
@@ -106,7 +112,10 @@ function GroupDetail({ dispatch, history, group, router, loading }) {
           <h1>基本信息
             <Button className={style.basicBtn} onClick={() => {
               if (groupDetailState) {
-                console.log ("编辑")
+                dispatch ({
+                  type:"group/editGroup",
+                  payload:{...group.detail}
+                })
               }
               groupDetailState = !groupDetailState;
               dispatch ({

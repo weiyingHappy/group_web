@@ -11,7 +11,7 @@ module.exports = {
       id: '2',
       name: '会员管理',
       icon: 'tags-o',
-      route: '/member/list/1',
+      route: '/member/list/1/groupMember',
     },
     {
       id: '3',

@@ -19,6 +19,15 @@ const Routers = function ({ history, app }) {
       models: () => [],
       component: () => import('./routes/login/'),
     },
+    {
+      path: '/choose',
+      component: () => import('./routes/choose/Choose.js'),
+    },
+    {
+      path: '/choose_hotel',
+      models: () => [import('./models/choose')],
+      component: () => import('./routes/choose/ChooseHotel.js'),
+    },
   ]
 
   console.log("app ",app)
