@@ -34,9 +34,10 @@ export default {
           },
         })
 
-        dispatch({
-          type: `${routers.model}/query`,
-        })
+        if (!(location.pathname.indexOf('member') > -1))
+          dispatch({
+            type: `${routers.model}/query`,
+          })
       })
     },
 
