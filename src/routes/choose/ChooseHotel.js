@@ -14,13 +14,14 @@ let position = {
 const ChooseHotel = ({loading, choose,dispatch}) => {
   let { lists } = choose
   lists = lists || []
-  console.log (lists)
 
   const renderImgs = list => {
     let arr = [];
     list = list || []
     list.map ((i,k) => arr.push (
-      <li key={k} className={styles.hotelItem}>
+      <li key={k} className={styles.hotelItem} onClick={()=>{
+        dispatch ({type:"choose/toTeam",payload:i.team_id})
+      }}>
         <img src={i.imgs ? i.imgs[0] : ''} />
         <span>{i.name}</span>
       </li>

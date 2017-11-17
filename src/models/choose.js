@@ -1,6 +1,7 @@
 import modelExtend from 'dva-model-extend'
 import { commonModel } from './common'
 import { query } from 'services/base'
+import { toTeam } from 'services/choose'
 import cookie from 'js-cookie'
 
 export default modelExtend(commonModel, {
@@ -38,12 +39,18 @@ export default modelExtend(commonModel, {
           totalPage = data.results.totalPage;
           page++;
           payload.page++;
-          console.log ("lists",lists,data.results.lists)
           yield put ({
             type:"success",
             payload:{lists}
           })
         }
+      }
+    },
+    *toTeam ({payload},{call, put}) {
+      const data = yield call (toTeam,payload);
+      if (data.code && data.code == 200) {
+        cookie.set ('token',data.results.token, { expires: 1, path: '' })
+        location.href = '/hoteladmin/#/panel_home'
       }
     }
   }

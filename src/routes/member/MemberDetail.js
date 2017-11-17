@@ -190,15 +190,15 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
       title:"订单编号",
       dataIndex:"id"
     },
-    {
-      title:"操作",
-      dataIndex:'object_id',
-      render:(text, record) => (
-        <div className={cs.tableAction}>
-          {text?<span onClick={() => { history.push(`/member/member_detail/${record.object_id}`) }}>查看详情</span>:''}
-        </div>
-      )
-    },
+    // {
+    //   title:"操作",
+    //   dataIndex:'object_id',
+    //   render:(text, record) => (
+    //     <div className={cs.tableAction}>
+    //       {text?<span onClick={() => { history.push(`/member/member_detail/${record.object_id}`) }}>查看详情</span>:''}
+    //     </div>
+    //   )
+    // },
   ]
   const pointModel = {
     nowPage:point.nowPage || 0,

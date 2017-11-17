@@ -26,8 +26,10 @@ const Login = ({
 
   return (
     <div className={styles.form}>
-      <div className={styles.logo}>
-        <img alt={'logo'} src="http://ov2ek9bbx.bkt.clouddn.com/FvEt8SCgfscs52AgCrYiVQ8prEnR" />
+      <div className={styles.logo} style={{height:54}}>
+        {/* <img alt={'logo'} src="http://ov2ek9bbx.bkt.clouddn.com/FvEt8SCgfscs52AgCrYiVQ8prEnR" /> */}
+        <h1>住那儿旅行-集团系统</h1>
+        <span style={{fontWeight:'bold'}}>登录</span>
       </div>
       <form>
         <FormItem hasFeedback>
