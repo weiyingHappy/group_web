@@ -30,7 +30,7 @@ export default modelExtend(commonModel, {
       }
       console.log ("choose_hotel")
       let page = 0,totalPage=1;
-      while (page != totalPage) {
+      while (page < totalPage) {
         console.log ("getListTeam")
         const data = yield call (query, router, payload)
         if (data.code && data.code == 200) {

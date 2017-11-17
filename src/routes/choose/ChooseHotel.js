@@ -20,7 +20,7 @@ const ChooseHotel = ({loading, choose,dispatch}) => {
     list = list || []
     list.map ((i,k) => arr.push (
       <li key={k} className={styles.hotelItem} onClick={()=>{
-        dispatch ({type:"choose/toTeam",payload:i.team_id})
+        dispatch ({type:"choose/toTeam",payload:i.team_id || i.id})
       }}>
         <img src={i.imgs ? i.imgs[0] : ''} />
         <span>{i.name}</span>
