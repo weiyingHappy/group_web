@@ -13,12 +13,14 @@ module.exports = {
       name: '会员管理',
       // icon: 'tags-o',
       route: '/member/list/1/groupMember',
+      img:true
     },
     {
       id: '3',
       name: '集团信息',
       // icon: 'shopping-cart',
       route: '/group/detail/undefine/groupManage',
+      img:true
     }
   ],
 
