@@ -49,7 +49,7 @@ export default modelExtend(commonModel, {
     *toTeam ({payload},{call, put}) {
       const data = yield call (toTeam,payload);
       if (data.code && data.code == 200) {
-        cookie.set ('token',data.results.token, { expires: 1, path: '' })
+        cookie.set ('token',data.results.token)
         location.href = '/hoteladmin/#/panel_home'
       }
     }
