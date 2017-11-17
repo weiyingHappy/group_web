@@ -63,7 +63,7 @@ export default modelExtend(commonModel, {
             ? data.results.merchant_name
             : data.results.phone
             , { expires: 1, path: '' });
-        cookie.set("userName",1, { expires: 1, path: '' });
+        cookie.set("remember",1, { expires: 1, path: '' });
         location.href = '/hoteladmin/#/panel_home'
       }
     }
