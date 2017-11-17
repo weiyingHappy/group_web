@@ -64,6 +64,7 @@ export default modelExtend(commonModel, {
             : data.results.phone
             , { expires: 1, path: '/' });
         cookie.set("remember",1, { expires: 1, path: '/' });
+        cookie.set("limit",10, { expires: 1, path: '/' });
         location.href = '/hoteladmin/#/panel_home'
       }
     }
