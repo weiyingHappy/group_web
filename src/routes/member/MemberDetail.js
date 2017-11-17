@@ -237,7 +237,7 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
           </Col>
           <Col span={6}>
             <label className={style.label}>会员账号：</label>
-            <span>{detail.wxid}</span>
+            <span>{detail.phone}</span>
           </Col>
         </Row>
         <Row>
