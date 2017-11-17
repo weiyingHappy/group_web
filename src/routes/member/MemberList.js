@@ -98,7 +98,7 @@ function MemberList({ dispatch, history, member, router }) {
         return (
           <div className={cs.tableAction}>
             <span onClick={() => { history.push(`/${router.model}/detail/${record.id}/groupMember`) }}>查看详情</span>
-            {(+record.hotel_point) ? <span onClick={() => handle_open('point',record.point,record.id)}>核销积分</span> : ''}
+            {(+record.hotel_point) ? <span onClick={() => handle_open('point',record.hotel_point,record.id)}>核销积分</span> : ''}
           </div>
         )
       },

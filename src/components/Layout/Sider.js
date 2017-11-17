@@ -60,7 +60,7 @@ class Sider extends React.Component {
   render() {
     return (
       <div>
-        <div className={styles.logo}>
+        <div className={styles.logo} style={{backgroundColor:'#FFD100'}}>
           {this.props.siderFold
             ?
             '集团管理'
