@@ -30,6 +30,7 @@ export default modelExtend(commonModel, {
       }
       console.log ("choose_hotel")
       let page = 0,totalPage=1;
+      console.log ('page',page,totalPage)
       while (page < totalPage) {
         console.log ("getListTeam")
         const data = yield call (query, router, payload)
@@ -50,6 +51,18 @@ export default modelExtend(commonModel, {
       const data = yield call (toTeam,payload);
       if (data.code && data.code == 200) {
         cookie.set ('token',data.results.token, { expires: 1, path: '' })
+        cookie.set ('merchant_name',data.results.merchant_name, { expires: 1, path: '' })
+        cookie.set ('phone',data.results.phone, { expires: 1, path: '' })
+        cookie.set ('teamId',data.results.team.id, { expires: 1, path: '' })
+        cookie.set ('teamName',data.results.team.name, { expires: 1, path: '' })
+        cookie.set ('wshop',data.results.team.wshop, { expires: 1, path: '' })
+        cookie.set ('userInfo',data.results.token, { expires: 1, path: '' })
+        cookie.set(
+          "userName",
+          data.results.merchant_name
+            ? data.results.merchant_name
+            : data.results.phone
+        );
         location.href = '/hoteladmin/#/panel_home'
       }
     }
