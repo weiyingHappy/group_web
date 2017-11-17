@@ -66,7 +66,7 @@ export default modelExtend(commonModel, {
         cookie.set("remember",1, { expires: 1, path: '/' });
         cookie.set("limit",10, { expires: 1, path: '/' });
         cookie.set("roleId",1, { expires: 1, path: '/' });
-        cookie.set("groupName",data,results.group_name, { expires: 1, path: '/' });
+        cookie.set("groupName",data.results.group_name, { expires: 1, path: '/' });
         location.href = '/hoteladmin/#/panel_home'
       }
     }
