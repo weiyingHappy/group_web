@@ -34,9 +34,10 @@ export default {
           },
         })
 
-        dispatch({
-          type: `${routers.model}/query`,
-        })
+        if (!(location.pathname.indexOf('member') > -1))
+          dispatch({
+            type: `${routers.model}/query`,
+          })
       })
     },
 
@@ -79,6 +80,7 @@ export default {
       if (filterData(data)) {
         // 登陆成功，设置session-token
         cookie.set('token', data.results.token, { expires: 1, path: '' })
+        cookie.set ('group_id',data.results.group_id, { expires: 1, path: '' })
         const { from } = locationQuery
         yield put({ type: 'query' })
         if (!from || from === '/login' || from === '/') {

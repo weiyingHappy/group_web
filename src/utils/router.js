@@ -3,27 +3,27 @@ module.exports = {
   modelRoute: [
     {
       model: 'shelf',
-      noadd: false,
-      nodetail: false,
-      nolist: false,
+      noadd: true,
+      nodetail: true,
+      nolist: true,
       cus: 'net',
     },
     {
-      model: 'product',
-    },
-    {
-      model: 'net',
-    },
-    {
-      model: 'staff',
-    },
-    {
-      model: 'order',
+      model: 'member',
       noadd: true,
+      cus:"groupMember"
     },
     {
-      model: 'delivery',
+      model: 'team',
       noadd: true,
+      cus:"groupManage"
+    },
+    {
+      model: 'group',
+      noadd: true,
+      nolist: true,
+      cus:"groupManage",
+
     },
   ],
 }

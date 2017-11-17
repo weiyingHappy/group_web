@@ -30,7 +30,7 @@ const App = ({ children, app, loading, location, dispatch }) => {
     <div>
       <Loader fullScreen spinning={loading.effects['app/query']} />
       <Helmet>
-        <title>cooke</title>
+        <title>集团管理</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
       <div className={classnames(styles.layout, { [styles.fold]: siderFold })}>

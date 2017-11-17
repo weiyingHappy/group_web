@@ -1,0 +1,52 @@
+.caseItem {
+  padding: 8px 18px;
+  >h1{
+    font-size: 16px;
+    font-weight: bold;
+    color: #8A6432;
+    line-height: 32px;
+    border-bottom:2px solid #E6E9ED;
+    text-indent: 16px;
+    position: relative;
+  }
+  .basicBtn{
+    position: absolute;
+    right: 0;
+    background-color: #FFD100;
+    &:hover,&:active,&:focus{
+      color:#FFD100;
+      background: white;
+      border-color: #FFD100
+    }
+  }
+  .mainInfo{
+    padding: 16px;
+    line-height: 28px;
+  }
+  .basicInfo{
+    padding: 16px;
+    >label{
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .textArea{
+      max-width: 1000px;
+      min-height: 100px;
+    }
+  }
+}
+
+.upload_pic_img_text{
+  width: 236px;
+  height: 180px;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  cursor: pointer;
+  margin-right: 10px;
+  float: left;
+}

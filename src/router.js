@@ -19,7 +19,23 @@ const Routers = function ({ history, app }) {
       models: () => [],
       component: () => import('./routes/login/'),
     },
+    {
+      path: '/choose',
+      component: () => import('./routes/choose/Choose.js'),
+    },
+    {
+      path: '/choose_hotel',
+      models: () => [import('./models/choose')],
+      component: () => import('./routes/choose/ChooseHotel.js'),
+    },
+    {
+      path: '/member/member_detail/:order_no',
+      models: () => [import('./models/member')],
+      component: () => import('./routes/member/MemberOrderDetail.js'),
+    },
   ]
+
+  console.log("app ",app)
 
   const getRouterObj = (item, action) => {
     return ({

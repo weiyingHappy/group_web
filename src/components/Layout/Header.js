@@ -28,7 +28,7 @@ const Header = ({ user, siderFold, switchSider }) => {
                 style={{ textAlign: 'center' }}
                 onClick={() => {
                   window.location.reload()
-                  window.location.href = `${domain()}#/login`
+                  window.location.href = `/group/#/login`
                 }}
               >退出</div>
             </Menu.Item>

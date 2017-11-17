@@ -1,0 +1,203 @@
+.searchCase {
+  padding: 10px 18px;
+  background-color: white;
+  margin-bottom: 20px;
+  .label{
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+  }
+  .formItem {
+    width:200px;
+  }
+  >div {
+    line-height: 36px;
+  }
+  .searchBtn {
+    background-color: #FFD100;
+    &:hover,&:active,&:focus{
+      color:#FFD100;
+      background: white;
+      border-color: #FFD100
+    }
+  }
+  .clearBtn{
+    color: black;
+    background: white;
+    border-color: #FFD100;
+    margin-right: 20px;
+  }
+}
+
+.searchCountCase {
+  padding: 20px;
+  background-color: white;
+  margin-bottom: 20px;
+  font-size: 19px;
+  color:#73879C;
+  .searchCount {
+    color:#FF3333;
+  }
+}
+
+.detailCase {
+  padding: 10px 18px;
+  background-color: white;
+  margin-bottom: 20px;
+  line-height: 36px;
+  .caseTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color:#8A6432;
+    border-bottom: 2px solid #E6E9ED;
+    text-indent: 18px;
+  }
+  .label{
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+  }
+  .caseInfo {
+    margin-top: 16px;
+    position: relative;
+    .PointDiv {
+      display: inline-block;
+      width:400px;
+      height: 80px;
+      line-height: 80px;
+      text-indent: 20px;
+      background-color: #FFE881;
+      font-size: 18px;
+    }
+    .caseBtn {
+      position: absolute;
+      right:0;
+      top:0;
+      background-color: #FFD100;
+      &:hover,&:active,&:focus{
+        color:#FFD100;
+        background: white;
+        border-color: #FFD100
+      }
+    }
+    .description{
+      font-size: 16px;
+      >span{
+        font-size: 18px;
+      }
+    }
+    .coupons{
+      width: 711px;
+      display: flex;
+      flex-flow: row wrap;
+      .couponItem {
+        width:237px;
+        height: 54px;
+        margin-bottom: 10px;
+        >span{
+          display: inline-block;
+          width:197px;
+          height: 54px;
+          background-image: url(../../assets/coupon.png);
+          line-height: 54px;
+          text-indent: 30px;
+        }
+        >label{
+          display: inline-block;
+          text-indent: 8px
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  line-height: 36px;
+  vertical-align: middle;
+}
+.modal label {
+  display: inline-block;
+  width: 80px;
+}
+
+.container {
+  min-height: 999px;
+  background-color: #fff;
+  padding: 20px;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "\5FAE\8F6F\96C5\9ED1", SimSun, sans-serif;
+}
+.title_p {
+  width: 100%;
+  height: 58px;
+  line-height: 58px;
+  background-color: #F5F5F5;
+  border-right: 1px solid #DDDDDD;
+  padding-left: 34px;
+}
+
+.room_wrap {
+  width: 100%;
+  height: auto;
+  border: 1px solid #DDDDDD;
+}
+
+.roomMsg {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #F0F0F0;
+  color: #333333;
+  padding-left: 24px;
+  font-size: 18px;
+}
+
+.order_wrap ul li {
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 1px solid #DFDFDF;
+}
+
+.item_orderNo li {
+  padding-left: 14%;
+}
+
+.item_left {
+  float: left;
+  overflow: hidden;
+  width: 48%;
+  border-right: 1px solid #DFDFDF;
+}
+
+.item_left li {
+  padding-left: 30%;
+}
+
+.item_right li {
+  padding-left: 60%;
+}
+
+.item_payList li {
+  float: left;
+  padding-left: 25%;
+}
+
+.tab {
+  width: 100%;
+  text-align: center;
+  font-family: "Microsoft YaHei";
+}
+
+.tab th {
+  height: 45px;
+  color: #333333;
+  border-bottom: 1px solid #DFDFDF;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.tab tbody td {
+  height: 84px;
+  font-size: 14px;
+}

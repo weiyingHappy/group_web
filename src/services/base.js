@@ -4,17 +4,17 @@ import { upperModle } from 'util'
 import { apiPackage } from 'config'
 
 export async function login(data) {
-  return request(`${apiPackage}/Basic/login`, data)
+  return request(`${apiPackage}/GroupBasic/login`, data)
 }
 
 // 根据token获取登陆信息
 export async function loginInfo() {
-  return request(`${apiPackage}/Basic/loginInfo`)
+  return request(`${apiPackage}/GroupBasic/loginInfo`)
 }
 
 // 获取七牛上传token
 export async function qiuniuToken() {
-  return request(`${apiPackage}/Basic/qiniuToken`)
+  return request(`${apiPackage}/GroupBasic/qiniuToken`)
 }
 
 // 根据token获取登陆信息
@@ -48,5 +48,6 @@ export async function query(router, payload, action) {
       payload.id = router.id
     }
   }
+  console.log(payload)
   return request(url, payload)
 }
