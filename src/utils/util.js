@@ -3,7 +3,7 @@ import config from './config'
 
 export function env() {
   const host = window.location.hostname
-  if (host.indexOf('cooke100.com') >= 0) {
+  if (host.indexOf('hotelets.com') >= 0) {
     return 'production'
   } else if (host.indexOf('lianwuyun.cn') >= 0) {
     return 'testing'
