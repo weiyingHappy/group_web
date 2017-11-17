@@ -50,20 +50,20 @@ export default modelExtend(commonModel, {
     *toTeam ({payload},{call, put}) {
       const data = yield call (toTeam,payload);
       if (data.code && data.code == 200) {
-        cookie.set ('token',data.results.token, { expires: 1, path: '/hoteladmin/' })
-        cookie.set ('merchant_name',data.results.merchant_name, { expires: 1, path: '/hoteladmin/' })
-        cookie.set ('phone',data.results.phone, { expires: 1, path: '/hoteladmin/' })
-        cookie.set ('teamId',data.results.team.id, { expires: 1, path: '/hoteladmin/' })
-        cookie.set ('teamName',data.results.team.name, { expires: 1, path: '/hoteladmin/' })
-        cookie.set ('wshop',data.results.team.wshop, { expires: 1, path: '/hoteladmin/' })
-        cookie.set ('userInfo',data.results.token, { expires: 1, path: '/hoteladmin/' })
+        cookie.set ('token',data.results.token, { expires: 1, path: '/' })
+        cookie.set ('merchant_name',data.results.merchant_name, { expires: 1, path: '/' })
+        cookie.set ('phone',data.results.phone, { expires: 1, path: '/' })
+        cookie.set ('teamId',data.results.team.id, { expires: 1, path: '/' })
+        cookie.set ('teamName',data.results.team.name, { expires: 1, path: '/' })
+        cookie.set ('wshop',data.results.team.wshop, { expires: 1, path: '/' })
+        cookie.set ('userInfo',data.results.token, { expires: 1, path: '/' })
         cookie.set(
           "userName",
           data.results.merchant_name
             ? data.results.merchant_name
             : data.results.phone
-            , { expires: 1, path: '/hoteladmin/' });
-        cookie.set("remember",1, { expires: 1, path: '/hoteladmin/' });
+            , { expires: 1, path: '/' });
+        cookie.set("remember",1, { expires: 1, path: '/' });
         location.href = '/hoteladmin/#/panel_home'
       }
     }
