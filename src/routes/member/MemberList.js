@@ -278,7 +278,7 @@ function MemberList({ dispatch, history, member, router }) {
             />
           </Row>
           <Row>
-            <label>核销积分数:</label>
+            <label>核销积分内容:</label>
             <TextArea
               style={{width:365,height:60}}
               value={componentState.pointInfo.intro}

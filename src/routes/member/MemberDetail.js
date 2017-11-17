@@ -39,10 +39,27 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
   }
 
   const renderCoupons = list => {
-    let arr = [];
-    (list || []).map ((i,k) => arr.push(
+    let arr = [],filterCoupon = [];
+    // (list || []).map ((i,k) => arr.push(
+    //   <div className={style.couponItem} key={k}>
+    //     <span>{i.title}</span>
+    //   </div>
+    // ))
+    (list || []).map (i => {
+      let index = -1;
+      filterCoupon.map ((t,k) => {
+        if (t.coupon_type == i.coupon_type)
+          index = k;
+      })
+      if (index != -1)
+        filterCoupon[index].num++;
+      else
+        filterCoupon.push ({title:i.title,num:1,coupon_type:i.coupon_type})
+    })
+    filterCoupon.map ((i,k) => arr.push(
       <div className={style.couponItem} key={k}>
         <span>{i.title}</span>
+        {i.num-1?<label>{i.num}张</label>:''}
       </div>
     ))
     return arr;
@@ -266,7 +283,7 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
       <div className={style.detailCase} >
         <h1 className={style.caseTitle}>他的优惠券</h1>
         <div className={style.caseInfo}>
-          <span className={style.description}>他的优惠券&nbsp;<span>{detail.coupon ? detail.coupon.length : 0}张</span></span>
+          <span className={style.description}>可用优惠券&nbsp;<span>{detail.coupon ? detail.coupon.length : 0}张</span></span>
           <Button className={style.caseBtn} onClick={() => handle_open('coupon')}>发放优惠券</Button>
           <div className={style.coupons}>{renderCoupons(detail.coupon)}</div>
           <span className={style.description}>已用优惠券&nbsp;<span>{calcUsed(detail.coupon)}张</span></span>
@@ -324,7 +341,7 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
             />
           </Row>
           <Row>
-            <label>核销积分数:</label>
+            <label>核销积分内容:</label>
             <TextArea
               style={{width:365,height:60}}
               value={componentState.pointInfo.intro}
