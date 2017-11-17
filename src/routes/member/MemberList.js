@@ -27,6 +27,7 @@ let componentState = {
 const { DataTable, SearchBar } = General
 function MemberList({ dispatch, history, member, router }) {
   let { search, tempLists } = member
+  console.log (member)
   const handle_open = (type,max,id) => {
     if (type) {
       type += 'Visible';

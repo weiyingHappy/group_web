@@ -62,7 +62,8 @@
 
   .sider {
     box-shadow: 1px 0px 3px #ccc;
-    width: 224px;
+    // width: 224px;
+    width:160px;
     position: absolute;
     overflow: visible;
     padding-bottom: 24px;
@@ -82,7 +83,7 @@
       z-index: 5555;
       position: relative;
       img {
-        width: 151px;
+        width: 122px;
         height: 40px;
         margin-right: 8px;
         margin-top: 2px;
@@ -140,17 +141,27 @@
 
       .ant-menu {
         transition: @transition-ease-out;
+        background-color: #282828;
+
         .ant-menu-item,
         .ant-menu-submenu-title {
           overflow: hidden;
           white-space: normal;
+          text-align: center;
+          >a{
+            color:white;
+            &:hover,&:active,&:focus{
+              color:#FFD100;
+            }
+          }
         }
       }
     }
   }
 
   .main {
-    margin-left: 224px;
+    // margin-left: 224px;
+    margin-left: 160px;
     overflow: auto;
     height: 100vh;
     transition: @transition-ease-out;

@@ -280,7 +280,7 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
         </div>
       </div>
 
-      <div className={style.detailCase} >
+      {/* <div className={style.detailCase} >
         <h1 className={style.caseTitle}>他的优惠券</h1>
         <div className={style.caseInfo}>
           <span className={style.description}>可用优惠券&nbsp;<span>{detail.coupon ? detail.coupon.length : 0}张</span></span>
@@ -288,7 +288,7 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
           <div className={style.coupons}>{renderCoupons(detail.coupon)}</div>
           <span className={style.description}>已用优惠券&nbsp;<span>{calcUsed(detail.coupon)}张</span></span>
         </div>
-      </div>
+      </div> */}
 
       <div className={style.detailCase} >
         <h1 className={style.caseTitle}>他的订单</h1>

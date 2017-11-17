@@ -92,13 +92,13 @@ export default modelExtend(commonModel, {
     *pointExchange ({payload}, {call,put}) {
       let data = yield call (pointExchange,payload)
       if (data.code && data.code == 200) {
-        yield put ({type:'query'})
+        location.reload()
       }
     },
     *sendCoupon ({payload}, {call,put}) {
       let data = yield call (sendCoupon,payload)
       if (data.code && data.code == 200) {
-        yield put ({type:'query'})
+        location.reload()
       }
     },
   }

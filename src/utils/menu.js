@@ -4,19 +4,20 @@ module.exports = {
     {
       id: '1',
       name: '酒店管理',
-      icon: 'appstore-o',
+      // icon: 'appstore-o',
       route: '/team/list/1/groupManage',
+      img:true
     },
     {
       id: '2',
       name: '会员管理',
-      icon: 'tags-o',
+      // icon: 'tags-o',
       route: '/member/list/1/groupMember',
     },
     {
       id: '3',
       name: '集团信息',
-      icon: 'shopping-cart',
+      // icon: 'shopping-cart',
       route: '/group/detail/undefine/groupManage',
     }
   ],
