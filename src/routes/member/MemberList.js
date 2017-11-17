@@ -7,6 +7,7 @@ import moment from 'moment'
 import style from './index.less'
 const Option = Select.Option
 const { TextArea } = Input
+const { RangePicker } = DatePicker
 
 let componentState = {
   pointVisible:false,
@@ -84,7 +85,12 @@ function MemberList({ dispatch, history, member, router }) {
     },
     {
       title: '会员积分',
-      dataIndex: 'hotel_point',
+      render: (text,record) => (
+        <span>
+          <span style={{marginRight:10}}>平台{record.point}</span>
+          <span>本地{record.hotel_point}</span>
+        </span>
+      )
     },
     {
       title: '操作',
@@ -92,19 +98,6 @@ function MemberList({ dispatch, history, member, router }) {
         return (
           <div className={cs.tableAction}>
             <span onClick={() => { history.push(`/${router.model}/detail/${record.id}/groupMember`) }}>查看详情</span>
-            <Popconfirm
-              title={`是否删除${record.name}这个商品？`}
-              onConfirm={() => {
-                dispatch({
-                  type: `${router.model}/edit`,
-                  payload: record.id,
-                  action: 'del',
-                  didAction: { type: 1 },
-                })
-              }}
-            >
-              设置VIP
-            </Popconfirm>
             {(+record.hotel_point) ? <span onClick={() => handle_open('point',record.point,record.id)}>核销积分</span> : ''}
           </div>
         )
@@ -134,7 +127,7 @@ function MemberList({ dispatch, history, member, router }) {
       if (search.phone)
         search.phone == i.phone ? null : flag = false;
       if (search.time)
-        search.time == i.create_time.split(' ')[0] ? null : flag = false;
+        moment(i.create_time,'YYYY-MM-DD HH:mm:ss').isBetween(search.time[0],search.time[1]) ? null : flag = false;
 
       return flag;
     })
@@ -226,15 +219,14 @@ function MemberList({ dispatch, history, member, router }) {
           </Col>
           <Col span={8}>
             <label className={style.label}>创建时间：</label>
-            <DatePicker
+            <RangePicker
               className={style.formItem}
               format='YYYY-MM-DD'
-              value={search.time ? moment(search.time,'YYYY-MM-DD') : search.time}
+              value={search.time}
               onChange={(date,str) => {
-                search.time = str;
+                search.time = date;
                 dispatch ({
-                  type:"member/success",
-                  payload:{}
+                  type:"member/success"
                 })
               }}
             />

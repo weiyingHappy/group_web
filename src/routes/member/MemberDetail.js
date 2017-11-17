@@ -112,7 +112,16 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
   const orderColumns = [
     {
       title:"订单类型",
-      dataIndex:"type"
+      dataIndex:"type",
+      render:text => {
+        switch (+text) {
+          case 0: return '普通订单';
+          case 1: return '抢房订单';
+          case 2: return '门店订单';
+          case 3: return '到店支付订单';
+          default: return '';
+        }
+      }
     },
     {
       title:"订单编号",
@@ -148,7 +157,7 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
       title:"操作",
       render:(text, record) => (
         <div className={cs.tableAction}>
-          <span onClick={() => { history.push(`/${router.model}/orderDetail/${record.user_id}`) }}>查看详情</span>
+          <span onClick={() => { history.push(`/member/member_detail/${record.order_no}`) }}>查看详情</span>
         </div>
       )
     },
@@ -163,7 +172,7 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
   const pointColumns = [
     {
       title:"来源/用途",
-      dataIndex:"type"
+      dataIndex:"etc"
     },
     {
       title:"积分数量",
@@ -183,9 +192,10 @@ function MemberDetail({ dispatch, history, member, router, loading }) {
     },
     {
       title:"操作",
+      dataIndex:'object_id',
       render:(text, record) => (
         <div className={cs.tableAction}>
-          <span onClick={() => { history.push(`/${router.model}/orderDetail/${record.user_id}`) }}>查看详情</span>
+          {text?<span onClick={() => { history.push(`/member/member_detail/${record.object_id}`) }}>查看详情</span>:''}
         </div>
       )
     },

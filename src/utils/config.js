@@ -1,5 +1,5 @@
 module.exports = {
-  name: '酷客',
+  name: '集团管理',
   apiPackage: 'Group',
   openPages: ['/', '/login', '/choose', '/choose_hotel'],
   apiPrefix: {

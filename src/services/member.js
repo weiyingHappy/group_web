@@ -23,3 +23,7 @@ export async function sendCoupon(data) {
 export async function listCoupon() {
   return request('/Group/GroupMember/listCoupon')
 }
+
+export async function getMemberOrderDetail(order_no) {
+  return request(`/Group/GroupMember/detailMemberOrder/${order_no}`)
+}

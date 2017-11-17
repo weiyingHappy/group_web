@@ -4,6 +4,7 @@ import { menus, openkeys } from 'menu'
 import { Link } from 'dva/router'
 import styles from './Layout.less'
 import cookie from 'js-cookie'
+import logo from "../../assets/logo.png";
 
 class Sider extends React.Component {
   state = {
@@ -62,9 +63,9 @@ class Sider extends React.Component {
         <div className={styles.logo}>
           {this.props.siderFold
             ?
-            '酷'
+            '集团管理'
             :
-            <img alt={'logo'} src="http://ov2ek9bbx.bkt.clouddn.com/FoZHpC67Opsur5D-19AbAc2R7OR_" />
+            <img alt={'logo'} src={logo} />
           }
         </div>
         <Menu

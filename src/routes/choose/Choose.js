@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { Button, Row, Form, Input } from 'antd'
 import styles from './index.less'
+import group_logo from '../../assets/group-logo.png'
+import hotel_logo from '../../assets/hotel-logo.png'
 
 const FormItem = Form.Item
 
@@ -24,13 +26,13 @@ const Choose = ({loading,dispatch,history}) => {
         <div className={styles.left} onClick={() => {
           history.push ('/team/list/1/groupManage')
         }}>
-          <p>图片</p>
+          <p><img src={group_logo}/></p>
           <label>集团管理平台</label>
         </div>
         <div className={styles.right} onClick={() => {
           history.push ('/choose_hotel')
         }}>
-          <p>图片</p>
+          <p><img src={hotel_logo}/></p>
           <label>酒店平台</label>
         </div>
       </div>

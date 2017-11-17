@@ -28,6 +28,11 @@ const Routers = function ({ history, app }) {
       models: () => [import('./models/choose')],
       component: () => import('./routes/choose/ChooseHotel.js'),
     },
+    {
+      path: '/member/member_detail/:order_no',
+      models: () => [import('./models/member')],
+      component: () => import('./routes/member/MemberOrderDetail.js'),
+    },
   ]
 
   console.log("app ",app)

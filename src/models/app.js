@@ -52,7 +52,6 @@ export default {
       const data = yield call(loginInfo, payload)
       const { locationPathname } = yield select(_ => _.app)
       if (filterData(data)) {
-        cookie.set ('group_id',data.results.group_id)
         yield put({
           type: 'updateState',
           payload: {
@@ -81,6 +80,7 @@ export default {
       if (filterData(data)) {
         // 登陆成功，设置session-token
         cookie.set('token', data.results.token, { expires: 1, path: '' })
+        cookie.set ('group_id',data.results.group_id, { expires: 1, path: '' })
         const { from } = locationQuery
         yield put({ type: 'query' })
         if (!from || from === '/login' || from === '/') {

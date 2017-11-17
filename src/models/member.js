@@ -1,7 +1,7 @@
 import modelExtend from 'dva-model-extend'
 import { commonModel } from './common'
 import { getMemberList, getMemberOrder, getMemberPoint,
-          pointExchange, sendCoupon,listCoupon } from 'services/member'
+          pointExchange, sendCoupon, listCoupon, getMemberOrderDetail } from 'services/member'
 
 export default modelExtend(commonModel, {
   namespace: 'member',
@@ -9,14 +9,17 @@ export default modelExtend(commonModel, {
   subscriptions: {
     setup({ dispatch,history }) {
       history.listen (location => {
-        let pathname = location.pathname;
-        console.log ('pathname')
-        if (pathname.indexOf('list') > -1) {
+        let pathname = location.pathname.split('/');
+        console.log ('pathname',pathname)
+        if (pathname.indexOf ('list') > -1 && pathname.indexOf ('member') > -1) {
           dispatch ({type:"getMemberList"})
         }
-        if (pathname.indexOf('detail') > -1) {
+        if (pathname.indexOf('detail') > -1 && pathname.indexOf ('member') > -1) {
           dispatch ({type:"query"})
           dispatch ({type:"getDetailList"})
+        }
+        if (pathname.indexOf('member_detail') > -1) {
+          dispatch ({type:'getMemberOrderDetail',payload:pathname[pathname.length-1]})
         }
       })
     },
@@ -58,6 +61,15 @@ export default modelExtend(commonModel, {
         yield put ({
           type:'success',
           payload:{point:data.results}
+        })
+      }
+    },
+    *getMemberOrderDetail ({payload},{call, put}) {
+      const data = yield call (getMemberOrderDetail,payload);
+      if (data.code && data.code == 200) {
+        yield put ({
+          type:'success',
+          payload:{orderDetail:data.results}
         })
       }
     },
